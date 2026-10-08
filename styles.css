@@ -1,3 +1,103 @@
+/* SarthiX-Medicure: lightweight smooth UI */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Lightweight transitions */
+button,
+a,
+input,
+select,
+textarea,
+.card {
+  transition:
+    color 150ms ease,
+    background-color 150ms ease,
+    border-color 150ms ease,
+    opacity 150ms ease;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hover effects only on devices with a mouse */
+@media (hover: hover) and (pointer: fine) {
+  button:hover,
+  .card:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Press feedback */
+button:active {
+  transform: scale(0.98);
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Scroll reveal animation */
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal.reveal-ready {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  .reveal.reveal-ready.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms ease, transform 300ms ease;
+  }
+}
+
+/* Reduce animations on mobile for a lighter experience */
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  button,
+  a,
+  input,
+  select,
+  textarea,
+  .card {
+    transition-duration: 120ms;
+  }
+
+  button:active {
+    transform: none;
+  }
+}
+
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
 *
 {
   box-sizing:border-box
