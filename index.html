@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4fbff">
+  <meta name="description" content="SarthiX-Medicure — healthcare made simpler, smarter and more accessible.">
+  <title>SarthiX-Medicure | Healthcare for a Healthier Tomorrow</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar container">
+      <a class="brand" href="#" aria-label="SarthiX-Medicure home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 92 92" role="img">
+            <defs>
+              <linearGradient id="logoBlue" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#1669ff"/>
+                <stop offset="1" stop-color="#14b8a6"/>
+              </linearGradient>
+            </defs>
+            <circle cx="46" cy="16" r="10" fill="#1670ff"/>
+            <path d="M29 31c-13 8-16 22-8 34 8 12 25 14 36 5l12-10-9-12-11 9c-5 4-12 2-14-3-2-5 0-9 5-12l10-6z" fill="url(#logoBlue)"/>
+            <path d="M38 45c-5 4-7 10-4 15 3 6 11 8 17 5l11-6-7-13-10 6c-2 1-5 0-6-2-1-2 0-4 2-5z" fill="#20a66a"/>
+            <path d="M64 24h16M72 16v16" stroke="#16a46f" stroke-width="7" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-copy">
+          <span class="brand-name"><strong>Sarthi</strong><b>X</b><em>-Medicure</em></span>
+          <span class="brand-tagline" lang="hi">— सेहत की हर बात, अपनों के साथ —</span>
+        </span>
+      </a>
+
+      <div class="utility-nav" aria-label="Accessibility and language controls">
+        <label class="language-select">
+          <span class="sr-only">Language</span>
+          <span class="globe" aria-hidden="true">◎</span>
+          <select id="languageSelect">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+          </select>
+        </label>
+        <label class="theme-select">
+          <span class="sr-only">Background theme</span>
+          <span class="theme-icon" aria-hidden="true">◐</span>
+          <select id="themeSelect" aria-label="Background theme">
+            <option value="navy">Navy</option>
+            <option value="dark">Dark</option>
+            <option value="white">White</option>
+          </select>
+        </label>
+        <div class="font-controls" aria-label="Text size">
+          <button type="button" id="fontIncrease" aria-label="Increase text size">A+</button>
+          <button type="button" id="fontDecrease" aria-label="Decrease text size">A-</button>
+        </div>
+        <span class="divider" aria-hidden="true"></span>
+        <button class="accessibility-btn" id="accessibilityBtn" type="button"
+                aria-expanded="false" aria-haspopup="true" aria-controls="accessibilityMenu"
+                aria-label="Accessibility options: Accessible Healthcare for Better India">
+          <span class="person-icon" aria-hidden="true">♿</span>
+          Accessibility
+        </button>
+      </div>
+    </header>
+
+    <main class="main-grid container">
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="eyebrow">CONNECT <span>•</span> CARE <span>•</span> HEAL</div>
+        <h1 id="heroTitle" lang="en">Healthcare for a<br><span>Healthier</span> Tomorrow</h1>
+        <div class="accent-line" aria-hidden="true"></div>
+        <p class="hero-description" id="heroDescription" lang="en">
+          SarthiX-Medicure connects patients, doctors and healthcare services to make
+          healthcare simpler, smarter and more accessible for everyone.
+        </p>
+
+        <div class="feature-grid" aria-label="Key services">
+          <button class="feature-card" type="button" data-feature="appointments">
+            <span class="feature-icon blue" aria-hidden="true">▣</span>
+            <strong>Book Appointments</strong>
+            <small>Find the right doctor, near you.</small>
+          </button>
+          <button class="feature-card" type="button" data-feature="doctors">
+            <span class="feature-icon purple" aria-hidden="true">♆</span>
+            <strong>Consult Doctors</strong>
+            <small>Expert advice, anytime.</small>
+          </button>
+          <button class="feature-card" type="button" data-feature="medicine">
+            <span class="feature-icon orange" aria-hidden="true">⌁</span>
+            <strong>Medicine &amp; Reports</strong>
+            <small>Check prices, verify authenticity.</small>
+          </button>
+          <button class="feature-card" type="button" data-feature="assistant">
+            <span class="feature-icon green" aria-hidden="true">♥</span>
+            <strong>AI Health Assistant</strong>
+            <small>Understand your reports &amp; medicines.</small>
+          </button>
+        </div>
+
+        <div class="doctor-scene" aria-hidden="true">
+          <div class="scene-stage">
+          <div class="skyline">
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <div class="hospital">
+            <span class="cross">+</span>
+            <div class="hospital-windows"><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="doctor-person">
+            <div class="hair"></div>
+            <div class="head"></div>
+            <div class="coat"></div>
+            <div class="stethoscope">◯</div>
+          </div>
+          <div class="patient-person">
+            <div class="hair"></div>
+            <div class="head"></div>
+            <div class="saree"></div>
+          </div>
+          <div class="tablet"></div>
+          <div class="scene-wave"></div>
+          </div>
+          <img class="doctor-scene-image" src="download.png" alt="">
+        </div>
+
+        <div class="trust-bar" aria-label="Trust highlights">
+          <span><b class="trust-icon">✓</b> Secure</span>
+          <span><b class="trust-icon">♧</b> Trusted</span>
+          <span><b class="trust-icon">♥</b> Privacy First</span>
+          <span><b class="trust-icon">▮</b> Accessible Healthcare</span>
+        </div>
+      </section>
+
+      <section class="login-panel" aria-labelledby="loginTitle">
+        <div class="login-inner">
+          <p class="welcome">Welcome to</p>
+          <h2 id="loginTitle"><strong>Sarthi</strong><b>X</b><em>-Medicure</em></h2>
+          <p class="choose-text">Choose how you want to continue</p>
+
+          <div class="role-grid" role="radiogroup" aria-label="Choose account type">
+            <button class="role-card selected" type="button" role="radio" aria-checked="true" data-role="patient">
+              <span class="role-check">✓</span>
+              <span class="role-avatar patient-avatar" aria-hidden="true">
+                <svg viewBox="0 0 72 72" focusable="false">
+                  <circle cx="36" cy="36" r="35" fill="#e1f2ff"/>
+                  <path d="M10 67c2-14 12-21 26-21s24 7 26 21" fill="#3e83bb"/>
+                  <path d="M30 42h13v13H30z" fill="#d99a73"/>
+                  <path d="M22 29c0-11 6-18 15-18s15 7 15 18v8c0 10-7 16-15 16s-15-6-15-16z" fill="#eab28e"/>
+                  <path d="M19 30c0-14 6-22 18-22 11 0 18 8 17 21l-7-7-2-6c-5 5-14 8-26 8z" fill="#302b2a"/>
+                  <path d="M31 32h.1M43 32h.1" stroke="#46342e" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M33 41c2 2 5 2 7 0" fill="none" stroke="#a65f54" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="role-name">Patient</span>
+              <span class="role-description">Book appointments,<br>track health, get support</span>
+              <span class="role-arrow" aria-hidden="true">→</span>
+            </button>
+            <button class="role-card" type="button" role="radio" aria-checked="false" data-role="doctor">
+              <span class="role-check"></span>
+              <span class="role-avatar doctor-avatar" aria-hidden="true">
+                <svg viewBox="0 0 72 72" focusable="false">
+                  <circle cx="36" cy="36" r="35" fill="#eee4ff"/>
+                  <path d="M12 67c2-14 11-21 24-21s22 7 24 21" fill="#fff" stroke="#cfd9e8" stroke-width="2"/>
+                  <path d="M30 42h13v13H30z" fill="#d99a73"/>
+                  <path d="M22 28c0-11 6-18 15-18s15 7 15 18v9c0 10-7 16-15 16s-15-6-15-16z" fill="#efbd9e"/>
+                  <path d="M20 30c-2-14 6-22 18-22 11 0 18 9 16 22l-6-4-2-10c-4 5-13 8-25 8z" fill="#4b332b"/>
+                  <path d="M27 21c-1 11 1 20 9 26-8 0-14-6-14-16 0-5 2-8 5-10zM49 20c4 5 5 12 2 19-2 5-6 8-11 8 7-7 8-17 9-27z" fill="#4b332b"/>
+                  <path d="M31 33h.1M43 33h.1" stroke="#49352e" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M33 41c2 2 5 2 7 0" fill="none" stroke="#a65f54" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M36 48v9c0 5 8 5 8 0v-2" fill="none" stroke="#4d6f8c" stroke-width="2.3" stroke-linecap="round"/>
+                  <circle cx="44" cy="53" r="2.5" fill="none" stroke="#4d6f8c" stroke-width="2"/>
+                  <path d="M27 48l9 14 9-14" fill="none" stroke="#d4e3ef" stroke-width="2"/>
+                </svg>
+              </span>
+              <span class="role-name">Doctor</span>
+              <span class="role-description">Manage patients,<br>prescriptions &amp; more</span>
+              <span class="role-arrow" aria-hidden="true">→</span>
+            </button>
+          </div>
+
+          <div class="auth-tabs" role="tablist" aria-label="Sign in method">
+            <button class="auth-tab active" type="button" role="tab" aria-selected="true" data-auth="password">Password</button>
+            <button class="auth-tab" type="button" role="tab" aria-selected="false" data-auth="otp">Mobile OTP</button>
+          </div>
+
+          <form id="loginForm" novalidate>
+            <div class="field">
+              <label for="identity">Email or Mobile Number</label>
+              <div class="input-wrap">
+                <span class="input-icon" id="identityIcon" aria-hidden="true">✉</span>
+                <span class="phone-prefix hidden" id="identityPhonePrefix" aria-hidden="true">
+                  <svg class="phone-icon" viewBox="0 0 24 24" focusable="false">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 11.19 18a19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.09 3.18 2 2 0 0 1 4.08 1h3a2 2 0 0 1 2 1.72c.12.96.35 1.9.69 2.8a2 2 0 0 1-.45 2.11L8.05 8.9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.57 2.8.69A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                  +91
+                </span>
+                <input id="identity" name="identity" type="text" autocomplete="username"
+                       placeholder="Email or Mobile Number" required>
+              </div>
+              <small class="field-error" id="identityError" aria-live="polite"></small>
+            </div>
+
+            <div class="field password-field" id="passwordField">
+              <label for="password">Password</label>
+              <div class="input-wrap">
+                <span class="input-icon" aria-hidden="true">▣</span>
+                <input id="password" name="password" type="password" autocomplete="current-password"
+                       placeholder="Enter your password" required minlength="8" aria-describedby="loginPasswordChecklist">
+                <button class="eye-btn" id="togglePassword" type="button" aria-label="Show password">◉</button>
+              </div>
+              <small class="field-error" id="passwordError" aria-live="polite"></small>
+              <ul class="password-checklist" id="loginPasswordChecklist" aria-label="Password requirements">
+                <li data-password-check="length">At least 8 characters</li>
+                <li data-password-check="uppercase">At least 1 uppercase letter</li>
+                <li data-password-check="special">At least 1 special character</li>
+                <li data-password-check="digits">At least 3 numbers</li>
+              </ul>
+            </div>
+
+            <div class="otp-field field hidden" id="otpField">
+              <label for="otp">6-digit OTP</label>
+              <div class="input-wrap">
+                <span class="input-icon" aria-hidden="true">#</span>
+                <input id="otp" name="otp" inputmode="numeric" autocomplete="one-time-code"
+                       placeholder="Enter 6-digit OTP" maxlength="6">
+              </div>
+              <small class="field-error" id="otpError" aria-live="polite"></small>
+            </div>
+
+            <div class="form-options" id="passwordOptions">
+              <label class="check-label">
+                <input id="rememberMe" type="checkbox">
+                <span class="custom-check"></span>
+                Remember me
+              </label>
+              <button class="text-link" id="forgotPassword" type="button">Forgot password?</button>
+            </div>
+
+            <button class="continue-btn" id="continueBtn" type="submit">
+              <span id="continueText">Continue</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+              <span class="spinner" aria-hidden="true"></span>
+            </button>
+
+            <div class="create-account">
+              <span></span>
+              <p>New here? <button type="button" id="createAccount">Create your account</button></p>
+              <span></span>
+            </div>
+
+            <p class="security-note">
+              <span aria-hidden="true">◆</span>
+              Your information is protected
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <div class="side-values container" aria-label="SarthiX values">
+      <div><span class="value-icon green">♥</span><p><b>Quality</b><br>Healthcare<br>for Everyone</p></div>
+      <div><span class="value-icon blue">♥</span><p><b>Helping</b><br>Hands</p></div>
+      <div><span class="value-icon blue">✦</span><p><b>Stronger</b><br>Communities</p></div>
+      <div><span class="value-icon green">⌁</span><p><b>Healthier</b><br>Future</p></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <dialog class="modal" id="modal">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Close">×</button>
+    <div id="modalContent"></div>
+  </dialog>
+
+  <div class="accessibility-menu" id="accessibilityMenu" hidden>
+    <strong>Accessibility</strong>
+    <label><input type="checkbox" id="contrastToggle"> High contrast</label>
+    <label><input type="checkbox" id="motionToggle"> Reduce motion</label>
+  </div>
+
+  <small class="developer-credit">Developed by ANURAGG</small>
+
+  <script src="script.js"></script>
+</body>
+</html>
