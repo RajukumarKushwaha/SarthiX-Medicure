@@ -1,4 +1,51 @@
 (() => {
+  function initSmoothReveal() {
+    const elements = document.querySelectorAll(".reveal");
+
+    // Keep content visible if animations are unsupported.
+    if (
+      !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      elements.forEach((element) => {
+        element.classList.add("is-visible");
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, currentObserver) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            currentObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.05,
+        rootMargin: "0px 0px 30px 0px"
+      }
+    );
+
+    elements.forEach((element) => {
+      element.classList.add("reveal-ready");
+      observer.observe(element);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      initSmoothReveal,
+      { once: true }
+    );
+  } else {
+    initSmoothReveal();
+  }
+})();
+
+(() => {
   "use strict";
 
   const $ = (selector, root = document) => root.querySelector(selector);
