@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="page-backdrop" aria-hidden="true"></div>
   <div class="page-shell">
     <header class="topbar container">
       <a class="brand" href="#" aria-label="SarthiX-Medicure home">
@@ -33,23 +34,50 @@
       </a>
 
       <div class="utility-nav" aria-label="Accessibility and language controls">
-        <label class="language-select">
-          <span class="sr-only">Language</span>
-          <span class="globe" aria-hidden="true">◎</span>
-          <select id="languageSelect">
+        <div class="language-select choice-control">
+          <button class="choice-trigger" id="languageTrigger" type="button" aria-label="Language"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="languageMenu">
+            <span class="globe" aria-hidden="true">◎</span>
+            <span id="languageCurrent">English</span>
+            <span class="choice-chevron" aria-hidden="true">⌄</span>
+          </button>
+          <div class="choice-menu" id="languageMenu" role="radiogroup" aria-label="Language" hidden>
+            <button class="choice-option" type="button" role="radio" data-value="en" aria-checked="true">
+              <span class="choice-check" aria-hidden="true">✓</span>English
+            </button>
+            <button class="choice-option" type="button" role="radio" data-value="hi" aria-checked="false">
+              <span class="choice-check" aria-hidden="true">✓</span>हिन्दी
+            </button>
+          </div>
+          <select id="languageSelect" class="sr-only" aria-hidden="true" tabindex="-1" hidden>
             <option value="en">English</option>
             <option value="hi">हिन्दी</option>
           </select>
-        </label>
-        <label class="theme-select">
-          <span class="sr-only">Background theme</span>
-          <span class="theme-icon" aria-hidden="true">◐</span>
-          <select id="themeSelect" aria-label="Background theme">
+        </div>
+        <div class="theme-select choice-control">
+          <button class="choice-trigger" id="themeTrigger" type="button" aria-label="Background theme"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="themeMenu">
+            <span class="theme-icon" aria-hidden="true">◐</span>
+            <span id="themeCurrent">Navy</span>
+            <span class="choice-chevron" aria-hidden="true">⌄</span>
+          </button>
+          <div class="choice-menu theme-menu" id="themeMenu" role="radiogroup" aria-label="Background theme" hidden>
+            <button class="choice-option" type="button" role="radio" data-value="navy" aria-checked="true">
+              <span class="choice-check" aria-hidden="true">✓</span>Navy
+            </button>
+            <button class="choice-option" type="button" role="radio" data-value="dark" aria-checked="false">
+              <span class="choice-check" aria-hidden="true">✓</span>Dark
+            </button>
+            <button class="choice-option" type="button" role="radio" data-value="white" aria-checked="false">
+              <span class="choice-check" aria-hidden="true">✓</span>White
+            </button>
+          </div>
+          <select id="themeSelect" class="sr-only" aria-hidden="true" tabindex="-1" hidden>
             <option value="navy">Navy</option>
             <option value="dark">Dark</option>
             <option value="white">White</option>
           </select>
-        </label>
+        </div>
         <div class="font-controls" aria-label="Text size">
           <button type="button" id="fontIncrease" aria-label="Increase text size">A+</button>
           <button type="button" id="fontDecrease" aria-label="Decrease text size">A-</button>
@@ -131,7 +159,7 @@
         </div>
       </section>
 
-      <section class="login-panel" aria-labelledby="loginTitle">
+      <section class="login-panel reveal" aria-labelledby="loginTitle">
         <div class="login-inner">
           <p class="welcome">Welcome to</p>
           <h2 id="loginTitle"><strong>Sarthi</strong><b>X</b><em>-Medicure</em></h2>

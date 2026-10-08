@@ -172,8 +172,7 @@ img {
 }
 html
 {
-  font-size:calc(16px * var(--scale));
-  scroll-behavior:smooth
+  font-size:calc(16px * var(--scale))
 }
 body
 {
@@ -325,6 +324,10 @@ body:after
   bottom:-100px;
   background:var(--ambient-two);
   animation:ambientDriftTwo 24s ease-in-out infinite alternate
+}
+body.is-scrolling .page-backdrop,body.is-scrolling::before,body.is-scrolling::after
+{
+  animation-play-state:paused
 }
 @keyframes ambientDriftOne
 {
