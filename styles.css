@@ -1,3 +1,5 @@
+*
+
 /* SarthiX-Medicure: lightweight smooth UI */
 
 html {
@@ -97,6 +99,7 @@ img {
     transform: none !important;
   }
 }
+
 
 *
 {
@@ -423,41 +426,112 @@ button:focus-visible,input:focus-visible,select:focus-visible
 {
   display:flex;
   align-items:center;
+  position:relative
+}
+.choice-trigger
+{
+  display:flex;
+  align-items:center;
   gap:11px;
-  background:rgba(255,255,255,.86);
   border:1px solid rgba(211,226,241,.95);
   border-radius:999px;
-  padding:10px 17px;
+  padding:9px 14px;
+  min-height:44px;
+  background:rgba(255,255,255,.92);
   box-shadow:0 10px 28px rgba(41,94,146,.09);
+  color:#092d68;
+  font:inherit;
+  font-weight:700;
+  white-space:nowrap;
+  cursor:pointer;
   transition:box-shadow .2s ease,transform .2s ease,border-color .2s ease
 }
-.theme-select
+.theme-select .choice-trigger
 {
-  min-height:44px;
-  border-radius:999px;
-  padding:9px 17px;
   background:rgba(255,255,255,.97);
   border-color:rgba(22,128,245,.24)
 }
-.language-select:hover,.theme-select:hover
+.language-select:hover .choice-trigger,.theme-select:hover .choice-trigger
 {
   transform:translateY(-1px);
   border-color:rgba(22,128,245,.4)
 }
-.language-select:focus-within,.theme-select:focus-within
+.choice-trigger:focus-visible
 {
-  box-shadow:0 0 0 3px rgba(22,128,245,.16),0 10px 28px rgba(41,94,146,.09)
+  outline:3px solid rgba(22,128,245,.3);
+  outline-offset:2px
 }
-.language-select select,.theme-select select
+.choice-chevron
 {
+  color:#6681a7;
+  font-size:.85rem
+}
+.choice-menu
+{
+  position:absolute;
+  top:calc(100% + 8px);
+  left:0;
+  display:grid;
+  gap:4px;
+  width:170px;
+  max-width:calc(100vw - 28px);
+  padding:8px;
+  border:1px solid #d9e6f0;
+  border-radius:12px;
+  background:#fff;
+  box-shadow:0 16px 36px rgba(30,75,115,.17);
+  z-index:80
+}
+.choice-menu[hidden]
+{
+  display:none
+}
+.theme-menu
+{
+  left:auto;
+  right:0;
+  width:185px
+}
+.choice-option
+{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  width:100%;
+  min-height:40px;
+  padding:8px;
   border:0;
-  border-radius:999px;
+  border-radius:8px;
   background:transparent;
-  color:#092d68;
-  font-weight:700;
-  letter-spacing:.2px;
-  outline:0;
+  color:#466a93;
+  font:inherit;
+  text-align:left;
   cursor:pointer
+}
+.choice-option:hover,.choice-option[aria-checked="true"]
+{
+  background:#edf7ff;
+  color:#092d68
+}
+.choice-option[aria-checked="true"]
+{
+  font-weight:700
+}
+.choice-option:focus-visible
+{
+  outline:2px solid #1680f5;
+  outline-offset:1px
+}
+.choice-check
+{
+  width:18px;
+  flex:none;
+  color:#13a995;
+  visibility:hidden
+}
+.choice-option[aria-checked="true"] .choice-check
+{
+  visibility:visible
 }
 .globe
 {
@@ -2004,7 +2078,7 @@ body[data-theme="dark"] .developer-credit
   .utility-nav
   {
     width:100%;
-    justify-content:space-between;
+    justify-content:flex-start;
     gap:4px 8px
   }
   .utility-nav .divider
@@ -2019,13 +2093,19 @@ body[data-theme="dark"] .developer-credit
   {
     font-size:.8rem;
     padding:8px 4px;
-    gap:5px
+    gap:5px;
+    flex:none;
+    white-space:nowrap
   }
   .font-controls button
   {
     padding:8px 6px
   }
   .language-select,.theme-select
+  {
+    padding:0
+  }
+  .choice-trigger
   {
     gap:8px;
     padding:8px 12px
@@ -2143,6 +2223,19 @@ body[data-theme="dark"] .developer-credit
   {
     flex-wrap:wrap;
     gap:8px 12px
+  }
+}
+@media(max-width:768px)
+{
+  body
+  {
+    animation:none;
+    background-size:auto;
+    background-position:50% 50%
+  }
+  body::before,body::after
+  {
+    display:none
   }
 }
 @media(max-width:430px)
