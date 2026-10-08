@@ -45,6 +45,7 @@
   }
 })();
 
+
 (() => {
   "use strict";
 
@@ -205,7 +206,19 @@
   let currentLanguage = "en";
   const languageSelect = $("#languageSelect");
   const themeSelect = $("#themeSelect");
+  const languageCurrent = $("#languageCurrent");
+  const themeCurrent = $("#themeCurrent");
+  const languageOptions = $$("#languageMenu .choice-option");
+  const themeOptions = $$("#themeMenu .choice-option");
   const brandTagline = $(".brand-tagline");
+
+  function syncChoiceControl(select, currentLabel, options) {
+    const selectedOption = select.selectedOptions[0];
+    currentLabel.textContent = selectedOption.textContent;
+    options.forEach(option => {
+      option.setAttribute("aria-checked", String(option.dataset.value === select.value));
+    });
+  }
 
   function translated(value, language = currentLanguage) {
     if (language === "hi") return hindiTranslations[value] || value;
@@ -263,6 +276,8 @@
       void element.offsetWidth;
       element.classList.add("language-change");
     });
+    syncChoiceControl(languageSelect, languageCurrent, languageOptions);
+    syncChoiceControl(themeSelect, themeCurrent, themeOptions);
     updateIdentityInputMode(identityInput, identityIcon, identityPhonePrefix);
     const activeRegistrationForm = $("#patientRegistrationForm, #doctorRegistrationForm", modalContent);
     activeRegistrationForm?.dispatchEvent(new Event("sarthix-language-change"));
@@ -314,6 +329,7 @@
     document.body.style.setProperty("--ambient-one", palette.ambientOne);
     document.body.style.setProperty("--ambient-two", palette.ambientTwo);
     themeSelect.value = theme;
+    syncChoiceControl(themeSelect, themeCurrent, themeOptions);
   }
 
   themeSelect.addEventListener("change", event => {
@@ -899,12 +915,73 @@
   // Accessibility menu (button ke neeche hi khulta hai, har screen size pe)
   const accessibilityBtn = $("#accessibilityBtn");
   const accessibilityMenu = $("#accessibilityMenu");
+  const choiceControls = [
+    { trigger: $("#languageTrigger"), menu: $("#languageMenu"), select: languageSelect },
+    { trigger: $("#themeTrigger"), menu: $("#themeMenu"), select: themeSelect }
+  ].map(control => ({ ...control, options: $$(".choice-option", control.menu) }));
+
+  function closeChoiceMenu(control, restoreFocus = false) {
+    control.menu.hidden = true;
+    control.trigger.setAttribute("aria-expanded", "false");
+    if (restoreFocus) control.trigger.focus();
+  }
+
+  function closeChoiceMenus() {
+    choiceControls.forEach(control => closeChoiceMenu(control));
+  }
+
+  choiceControls.forEach(control => {
+    control.trigger.addEventListener("click", () => {
+      if (!control.menu.hidden) {
+        closeChoiceMenu(control);
+        return;
+      }
+      closeChoiceMenus();
+      control.menu.hidden = false;
+      control.trigger.setAttribute("aria-expanded", "true");
+      control.options.find(option => option.getAttribute("aria-checked") === "true")?.focus();
+    });
+
+    control.options.forEach(option => {
+      option.addEventListener("click", () => {
+        control.select.value = option.dataset.value;
+        control.select.dispatchEvent(new Event("change", { bubbles: true }));
+        closeChoiceMenu(control, true);
+      });
+    });
+
+    control.menu.addEventListener("keydown", event => {
+      const currentIndex = control.options.indexOf(document.activeElement);
+      let nextIndex = currentIndex;
+      if (event.key === "ArrowDown" || event.key === "ArrowRight") nextIndex = (currentIndex + 1) % control.options.length;
+      else if (event.key === "ArrowUp" || event.key === "ArrowLeft") nextIndex = (currentIndex - 1 + control.options.length) % control.options.length;
+      else if (event.key === "Home") nextIndex = 0;
+      else if (event.key === "End") nextIndex = control.options.length - 1;
+      else if (event.key === "Escape") {
+        event.preventDefault();
+        closeChoiceMenu(control, true);
+        return;
+      } else return;
+
+      event.preventDefault();
+      const nextOption = control.options[nextIndex];
+      nextOption.focus();
+      control.select.value = nextOption.dataset.value;
+      control.select.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+  });
+
+  document.addEventListener("click", event => {
+    if (!event.target.closest(".choice-control")) closeChoiceMenus();
+  });
 
   function positionMenu() {
     const rect = accessibilityBtn.getBoundingClientRect();
     const vw = document.documentElement.clientWidth;
+    const menuWidth = accessibilityMenu.offsetWidth || 230;
+    const right = Math.max(14, Math.min(vw - rect.right, vw - menuWidth - 14));
     accessibilityMenu.style.top = `${Math.round(rect.bottom + 8)}px`;
-    accessibilityMenu.style.right = `${Math.max(14, Math.round(vw - rect.right))}px`;
+    accessibilityMenu.style.right = `${Math.round(right)}px`;
   }
 
   function closeMenu() {
