@@ -920,6 +920,18 @@
     { trigger: $("#themeTrigger"), menu: $("#themeMenu"), select: themeSelect }
   ].map(control => ({ ...control, options: $$(".choice-option", control.menu) }));
 
+  function positionChoiceMenu(control) {
+    const triggerRect = control.trigger.getBoundingClientRect();
+    const viewportWidth = document.documentElement.clientWidth;
+    const viewportHeight = document.documentElement.clientHeight;
+    const menuWidth = control.menu.offsetWidth;
+    const menuHeight = control.menu.offsetHeight;
+    const left = Math.max(14, Math.min(triggerRect.left, viewportWidth - menuWidth - 14));
+    const top = Math.min(triggerRect.bottom + 8, viewportHeight - menuHeight - 14);
+    control.menu.style.left = `${Math.round(left)}px`;
+    control.menu.style.top = `${Math.max(14, Math.round(top))}px`;
+  }
+
   function closeChoiceMenu(control, restoreFocus = false) {
     control.menu.hidden = true;
     control.trigger.setAttribute("aria-expanded", "false");
@@ -938,6 +950,7 @@
       }
       closeChoiceMenus();
       control.menu.hidden = false;
+      positionChoiceMenu(control);
       control.trigger.setAttribute("aria-expanded", "true");
       control.options.find(option => option.getAttribute("aria-checked") === "true")?.focus();
     });
@@ -1003,9 +1016,21 @@
 
   // Sticky header: sirf shadow toggle hota hai (size same rehta hai, page jump nahi karta)
   const topbar = $(".topbar");
+  let scrollIdleTimer;
   function onScroll() {
+    if (window.scrollY > 0) {
+      document.body.classList.add("is-scrolling");
+      clearTimeout(scrollIdleTimer);
+      scrollIdleTimer = setTimeout(() => document.body.classList.remove("is-scrolling"), 160);
+    } else {
+      document.body.classList.remove("is-scrolling");
+      clearTimeout(scrollIdleTimer);
+    }
     if (topbar) topbar.classList.toggle("stuck", window.scrollY > 4);
     if (!accessibilityMenu.hidden) positionMenu();
+    choiceControls.forEach(control => {
+      if (!control.menu.hidden) positionChoiceMenu(control);
+    });
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
