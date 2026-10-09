@@ -48,7 +48,7 @@
 <p class="sr" id="status" role="status" aria-live="polite"></p>
 <div class="chips"><button type="button" class="chip">Doctors</button><button type="button" class="chip">Medicines</button><button type="button" class="chip">Lab Reports</button><button type="button" class="chip">Hospitals</button><button type="button" class="chip">Emergency</button></div>
 </div>
-<div class="hero-img"><img src="hero.jpg" width="2968" height="1024" alt="Muskurata doctor ek buzurg patient ko tablet par report dikha raha hai" fetchpriority="high" decoding="async"></div>
+<div class="hero-img"><img src="Compassionate Doctor-Patient Consultation.png" width="1670" height="941" alt="Doctor patient se dhyan se baat karte hue" fetchpriority="high" decoding="async"></div>
 </section>
 
 <section class="wrap quick">
@@ -73,30 +73,28 @@
 </section>
 
 <section class="wrap sec split" id="medicines">
-<div class="phone-col">
-<div class="phone" aria-label="Medicine scan ka namuna">
-<div class="screen">
-<div class="view" id="view">
-<div class="seg" role="tablist" aria-label="Jaanch ka tareeka"><button role="tab" aria-selected="true" data-mode="scan">Scan</button><button role="tab" aria-selected="false" data-mode="photo">Photo</button></div>
-<div class="strip"><b>Paracetamol 500mg</b><small>Strip of 10 tablets</small><i></i></div>
-<div class="frame"></div><div class="beam"></div>
-<p class="cap" id="cap">Barcode ko frame mein rakhein</p>
-</div>
-<div class="res">
-<div class="rr"><b>Scan result</b><span class="badge ok">Authentic ✓</span></div>
-<div class="rr line"><span>Batch</span><b>Verified</b></div>
-<div class="rr line"><span>Expiry</span><b>[date]</b></div>
-<p class="note">Sasti generic alternative available</p>
-<button class="btn navy full" type="button">Compare prices</button>
-</div>
-</div>
+<div class="medicine-visual" data-mode="photo">
+<div class="mode-buttons" role="group" aria-label="Jaanch ka tareeka"><button type="button" aria-pressed="false" data-mode="scan">Scan</button><button type="button" aria-pressed="true" data-mode="photo">Photo</button></div>
+<div class="medicine-image">
+<img class="medicine-photo" src="WhatsApp Image 2026-10-09 at 8.53.09 PM.jpeg" width="1448" height="1088" alt="WhatsApp par share ki gayi dawai ki photo" decoding="async">
+<img class="medicine-scan" src="SarthiX Medicine Scan Demo.png" alt="SarthiX-Medicure se paracetamol scan karte hue" decoding="async">
 </div>
 </div>
 <div class="txt">
+<div class="medicine-copy-wrap" data-mode="photo" aria-live="polite">
+<div class="medicine-copy" data-mode="scan" aria-hidden="true">
 <p class="eye">MEDICINE SCAN</p>
 <h2>Dawai scan karein, asli ya nakli turant jaanein</h2>
 <p class="muted">Strip ka barcode ya QR scan kijiye, ya phone se dawai ki photo kheenchiye. Jaanch ho jayegi aur sasti alternative bhi dikhegi.</p>
 <ol class="steps"><li>Barcode scan karein, ya phone se dawai ki photo kheenchein</li><li>Asli ya nakli, batch aur expiry ki jaanch paayein</li><li>Ek hi salt ki sasti dawaiyan compare karein</li></ol>
+</div>
+<div class="medicine-copy" data-mode="photo" aria-hidden="false">
+<p class="eye">MEDICINE PHOTO</p>
+<h2>Dawai ki photo se pehchaan, batch aur expiry check karein</h2>
+<p class="muted">Strip ya dabbe ki saaf photo dijiye. Dawai ka naam padhein, authenticity check karein aur sasti alternatives dekhein.</p>
+<ol class="steps"><li>Strip ya dabbe ki saaf photo upload karein</li><li>AI se naam, batch aur expiry padhein</li><li>Authenticity aur sasti alternatives check karein</li></ol>
+</div>
+</div>
 <div class="two">
 <article class="card sm" tabindex="0"><h3>Scan karein</h3><p>Barcode ya QR frame mein rakhein, turant jaanch.</p></article>
 <article class="card sm" tabindex="0"><h3>Photo kheenchein</h3><p>Strip ya dabbe ki saaf photo lein. AI naam aur batch padhkar jaanch karega.</p></article>
@@ -146,7 +144,7 @@
 
 <section class="wrap sec">
 <div class="join">
-<img class="crop" src="hero.jpg" width="2968" height="1024" alt="Muskurata doctor" loading="lazy" decoding="async" style="object-position:36% 20%">
+<div class="clinic-image-wrap"><img class="crop clinic-banner" src="SarthiX-Medicure Doctor Partner Banner.png" width="1665" height="944" alt="SarthiX-Medicure doctor partner banner" loading="lazy" decoding="async"></div>
 <div class="txt"><p class="eye blue-t">JOIN AS DOCTOR</p><h2>Apni clinic ko online layein, free mein</h2><p class="muted">Apna clinic page banayein, appointments lein aur paperwork kam karein.</p><a class="btn navy" href="login.html">Doctor ke roop mein judein →</a></div>
 </div>
 </section>

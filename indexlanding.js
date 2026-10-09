@@ -64,26 +64,24 @@
     status.textContent = v ? '"' + v + '" ke liye search jald shuru hoga.' : 'Pehle doctor, dawai ya report ka naam likhein.';
   });
 
-  // medicine scan demo: scan / photo tabs
-  var view = d.getElementById('view'), cap = d.getElementById('cap');
-  d.querySelector('.seg').addEventListener('click', function (e) {
-    var t = e.target.closest('[data-mode]');
-    if (!t) return;
-    d.querySelectorAll('.seg button').forEach(function (b) { b.setAttribute('aria-selected', b === t); });
-    view.dataset.mode = t.dataset.mode;
-    cap.textContent = t.dataset.mode === 'scan' ? 'Barcode ko frame mein rakhein' : 'Dawai ki saaf photo kheenchein';
+  var medicineVisual = d.querySelector('.medicine-visual');
+  var medicineCopyWrap = d.querySelector('.medicine-copy-wrap');
+  var medicineCopies = d.querySelectorAll('.medicine-copy');
+  d.querySelector('.mode-buttons').addEventListener('click', function (e) {
+    var button = e.target.closest('[data-mode]');
+    if (!button) return;
+    medicineVisual.dataset.mode = button.dataset.mode;
+    medicineCopyWrap.dataset.mode = button.dataset.mode;
+    medicineCopies.forEach(function (copy) {
+      copy.setAttribute('aria-hidden', copy.dataset.mode !== button.dataset.mode);
+    });
+    d.querySelectorAll('.mode-buttons button').forEach(function (item) {
+      item.setAttribute('aria-pressed', item === button);
+    });
   });
 
-  // pause scan animation when off-screen (saves battery on phones and TVs)
-  if ('IntersectionObserver' in window) {
-    var beam = d.querySelector('.beam');
-    new IntersectionObserver(function (en) {
-      beam.style.animationPlayState = en[0].isIntersecting ? 'running' : 'paused';
-    }).observe(view);
-  }
-
   // scroll reveal: only for blocks that start below the fold
-  var items = d.querySelectorAll('.sh,.card,.txt,.phone-col,.dark,.join,.senior-img,.family,.cta');
+  var items = d.querySelectorAll('.sh,.card,.txt,.medicine-visual,.dark,.join,.senior-img,.family,.cta');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (list) {
       list.forEach(function (en) {
