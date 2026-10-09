@@ -14,7 +14,7 @@
     senior = on;
     idx = on ? 3 : 1;
     root.classList.toggle('senior', on);
-    var b = d.getElementById('senior');
+    var b = d.getElementById('seniorToggle');
     if (b) {
       b.setAttribute('aria-pressed', on);
       b.textContent = on ? 'Senior mode band karein' : 'Senior mode chalu karein';
@@ -47,7 +47,7 @@
       applySize();
       return;
     }
-    if (e.target.closest('#senior')) setSenior(!senior);
+    if (e.target.closest('#seniorToggle')) setSenior(!senior);
   });
 
   // search chips and form
