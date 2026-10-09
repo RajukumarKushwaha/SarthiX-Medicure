@@ -104,6 +104,7 @@ h3{font-size:1.15rem;margin-bottom:.4rem}
 .stats b{font-size:1.9rem}.stats .wide b{font-size:1rem}.stats .warn{background:none;color:#FFB4AE;padding:0}
 .join{display:grid;grid-template-columns:minmax(0,28rem) 1fr;gap:2rem;align-items:center;background:linear-gradient(110deg,#E4EEFF,#DDF6EC);border:1px solid var(--line);border-radius:2rem;padding:clamp(1.2rem,3vw,2.2rem)}
 .crop{width:100%;height:16rem;object-fit:cover;border-radius:1.5rem;box-shadow:0 1rem 2.2rem rgba(20,36,107,.18)}.crop.tall{height:26rem;border-radius:2rem}
+.senior-banner{height:auto!important;aspect-ratio:1670/942;object-fit:contain}
 .clinic-image-wrap{position:relative;isolation:isolate}
 .clinic-image-wrap::before{content:"";position:absolute;inset:.65rem;border-radius:1.7rem;background:linear-gradient(135deg,#17B38A,#1B45B8);filter:blur(14px);opacity:.42;z-index:-1;animation:clinic-halo 3.5s ease-in-out infinite}
 .clinic-banner{position:relative;height:auto;aspect-ratio:1665/944;object-fit:contain;border:3px solid #fff;outline:1px solid rgba(11,127,107,.35);animation:clinic-float 5s ease-in-out infinite}
