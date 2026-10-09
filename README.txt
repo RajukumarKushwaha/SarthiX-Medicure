@@ -1,6 +1,6 @@
 # SarthiX-Medicure Login Frontend
 
-Files :
+Files:
 - index.html
 - styles.css
 - script.js
