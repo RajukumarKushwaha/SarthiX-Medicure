@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login | SarthiX-Medicure</title>
+  <link rel="stylesheet" href="doctorlogin.css">
+</head>
+<body>
+
+
+    <style>
+  /* Test Centre colours: yahan badlein */
+  .logo-mark, .btn { background: linear-gradient(135deg, #7c3aed, #a78bfa) !important; }
+  .brand small, .pw-toggle, a, .accent { color: #7c3aed !important; }
+  .chip.on, .reset-all { background: #7c3aed !important; }
+  .hero { background: linear-gradient(120deg, #faf5ff, #ede9fe) !important; border-color: #a78bfa !important; }
+  .pill { border-color: #a78bfa !important; }
+  .login-box { border-color: #7c3aed !important; animation: testGlow 1.6s ease-in-out infinite; }
+@keyframes testGlow {
+  0%, 100% { border-color: #7c3aed; box-shadow: 0 0 4px #7c3aed, 0 0 10px rgba(124, 58, 237, 0.4); }
+  50% { border-color: #a78bfa; box-shadow: 0 0 12px #a78bfa, 0 0 28px rgba(167, 139, 250, 0.8), inset 0 0 8px rgba(167, 139, 250, 0.35); }
+}
+</style>
+
+
+  <!-- top right: language + accessibility -->
+  <div class="top-pill">
+    <label class="lang-part" title="Language">
+      <svg width="22" height="22" viewBox="0 0 80 80">
+        <circle cx="22" cy="22" r="11" fill="#facc15"/>
+        <circle cx="40" cy="14" r="10" fill="#ef4444"/>
+        <circle cx="58" cy="22" r="9" fill="#dc2626"/>
+        <circle cx="16" cy="40" r="10" fill="#1d4ed8"/>
+        <circle cx="36" cy="38" r="12" fill="#1e1b4b"/>
+        <circle cx="58" cy="40" r="10" fill="#f59e0b"/>
+        <circle cx="24" cy="58" r="10" fill="#38bdf8"/>
+        <circle cx="46" cy="58" r="10" fill="#ec4899"/>
+        <circle cx="66" cy="60" r="8" fill="#f97316"/>
+      </svg>
+      <span class="lang-text" id="langLabel">EN</span>
+      <svg class="chev" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1e293b" stroke-width="3" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+      <select id="langSel" aria-label="Language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+      </select>
+    </label>
+    <span class="pill-divider"></span>
+    <button class="a11y-btn" id="a11yBtn" aria-label="Accessibility" aria-expanded="false">
+      <img src="gear.png" alt="">
+    </button>
+  </div>
+
+  <!-- accessibility panel -->
+  <div class="a11y-panel" id="a11yPanel" hidden>
+    <div class="a11y-head">
+      <div class="a11y-head-left">
+        <span class="a11y-head-icon"><img src="gear.png" alt=""></span>
+        <div>
+          <h3>Accessibility</h3>
+          <p>Customise your viewing experience</p>
+        </div>
+      </div>
+      <button class="a11y-close" id="a11yClose" aria-label="Close">&#10005;</button>
+    </div>
+
+    <div class="a11y-body">
+      <section class="a11y-card">
+        <div class="a11y-title">Page Zoom</div>
+        <div class="a11y-sub">Scale the entire page</div>
+        <div class="a11y-chips">
+          <button class="chip" data-zoom="-1">-</button>
+          <span class="zoom-val" id="zoomVal">100%</span>
+          <button class="chip" data-zoom="1">+</button>
+          <button class="chip ghost" data-zoom="0">Reset</button>
+        </div>
+      </section>
+
+      <section class="a11y-card">
+        <div class="a11y-title">Font Size</div>
+        <div class="a11y-sub">Adjust text size across the page</div>
+        <div class="a11y-chips">
+          <button class="chip" data-font="-1">A-</button>
+          <button class="chip" data-font="0">Default</button>
+          <button class="chip" data-font="1">A+</button>
+        </div>
+      </section>
+
+      <section class="a11y-card">
+        <div class="a11y-title">Color Blind Mode</div>
+        <div class="a11y-sub">Apply vision-friendly colour filters</div>
+        <div class="a11y-chips">
+          <button class="chip on" data-cb="none">None</button>
+          <button class="chip" data-cb="protanopia">Protanopia</button>
+          <button class="chip" data-cb="deuteranopia">Deuteranopia</button>
+          <button class="chip" data-cb="tritanopia">Tritanopia</button>
+          <button class="chip" data-cb="greyscale">Greyscale</button>
+          <button class="chip" data-cb="highcontrast">High Contrast</button>
+        </div>
+      </section>
+
+      <section class="a11y-card">
+        <div class="a11y-title">Display Tools</div>
+        <div class="a11y-sub">Quick visual adjustments</div>
+        <div class="tiles">
+          <button class="tile" data-toggle="darkContrast"><i>&#9790;</i>Dark Contrast</button>
+          <button class="tile" data-toggle="invert"><i>&#9680;</i>Invert</button>
+          <button class="tile" data-toggle="saturation"><i>&#10041;</i>Saturation</button>
+          <button class="tile" data-font="1"><i>A+</i>Text Size Increase</button>
+          <button class="tile" data-font="-1"><i>A-</i>Text Size Decrease</button>
+          <button class="tile" data-toggle="highlightLinks"><i>&#128279;</i>Highlight Links</button>
+          <button class="tile" data-toggle="hideImages"><i>&#9635;</i>Hide Images</button>
+          <button class="tile" data-toggle="defaultCursor"><i>&#8598;</i>Default Cursor</button>
+        </div>
+      </section>
+
+      <section class="a11y-card">
+        <div class="a11y-title">Reading &amp; Visual Aids</div>
+        <div class="a11y-sub">Spacing, fonts, guide, focus and read aloud</div>
+        <div class="tiles">
+          <button class="tile" data-toggle="lineSpacing"><i>T&#8285;</i>Line Spacing</button>
+          <button class="tile" data-toggle="textSpacing"><i>T</i>Text Spacing</button>
+          <button class="tile" data-toggle="dyslexia"><i>A</i>Dyslexia Friendly Font</button>
+          <button class="tile" data-toggle="boldText"><i>B</i>Bold Text</button>
+          <button class="tile" data-toggle="highlightHeadings"><i>H</i>Highlight Headings</button>
+          <button class="tile" data-toggle="bigCursor"><i>&#8598;</i>Big Cursor</button>
+          <button class="tile" data-toggle="readingGuide"><i>&#8801;</i>Reading Guide</button>
+          <button class="tile" data-toggle="stopAnimations"><i>&#10074;&#10074;</i>Stop Animations</button>
+          <button class="tile" data-toggle="highlightFocus"><i>&#9633;</i>Highlight Focus</button>
+          <button class="tile" data-action="readAloud"><i>&#128266;</i>Read Page Aloud</button>
+        </div>
+      </section>
+
+      <button class="reset-all" id="resetAll">Reset all accessibility settings</button>
+    </div>
+    <div class="powered">Powered by SarthiX</div>
+  </div>
+
+  <!-- colour filters used by "Color Blind Mode" -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="protanopia"><feColorMatrix type="matrix" values="0.567 0.433 0 0 0  0.558 0.442 0 0 0  0 0.242 0.758 0 0  0 0 0 1 0"/></filter>
+    <filter id="deuteranopia"><feColorMatrix type="matrix" values="0.625 0.375 0 0 0  0.7 0.3 0 0 0  0 0.3 0.7 0 0  0 0 0 1 0"/></filter>
+    <filter id="tritanopia"><feColorMatrix type="matrix" values="0.95 0.05 0 0 0  0 0.433 0.567 0 0  0 0.475 0.525 0 0  0 0 0 1 0"/></filter>
+    <filter id="greyscale"><feColorMatrix type="saturate" values="0"/></filter>
+  </svg>
+  <div id="readingGuide" hidden></div>
+
+  <!-- main page -->
+  <div class="login-wrap">
+    <section class="hero">
+      <span class="pill">SARTHIX-MEDICURE TEST CENTER'S DESK</span>
+      <h1 id="heroTitle">Welcome to <span class="accent">SarthiX-Medicure</span></h1>
+      <p id="heroText">Book tests, track samples and get your reports online..</p>
+    </section>
+
+    <!-- login card -->
+    <div class="card login-box" id="loginView">
+      <div class="brand">
+        <div class="logo-mark">S</div>
+        <div class="brand-name">SarthiX-Medicure</div>
+        <small>Test Center's Desk</small>
+      </div>
+
+      <h2 id="loginTitle">Login</h2>
+      <p class="hint" id="loginHint">Enter your email and password to continue.</p>
+
+      <form id="loginForm" novalidate>
+        <label for="email">Email</label>
+        <input type="email" id="email" autocomplete="username" placeholder="you@example.com">
+
+        <label for="pass">Password</label>
+        <div class="pw-row">
+          <input type="password" id="pass" autocomplete="current-password" placeholder="Enter password">
+          <button type="button" class="pw-toggle" id="pwToggle">Show</button>
+        </div>
+        <div class="right">
+          <a href="#" id="forgotLink">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn" id="loginBtn">Login</button>
+      </form>
+
+      <p class="msg" id="loginMsg"></p>
+      <p class="switch">New user? <a href="#" id="showSignup">Sign up</a></p>
+    </div>
+
+    <!-- sign up card -->
+    <div class="card login-box" id="signupView" hidden>
+      <div class="brand">
+        <div class="logo-mark">S</div>
+        <div class="brand-name">SarthiX-Medicure</div>
+        <small>Create new account</small>
+      </div>
+
+      
+      <form id="signupForm" novalidate>
+  <label for="testcenterName">Test-Center name</label>
+  <input type="text" id="labName" placeholder="e.g. City Diagnostic Lab">
+
+  <label for="suName">Test-Center incharge name</label>
+  <input type="text" id="suName" placeholder="Your full name">
+
+  <label for="testcenterAddress">Test-Center address</label>
+  <textarea id="labAddress" rows="2" placeholder="Building, street, area, city"></textarea>
+
+  <label for="labPin">Pincode</label>
+  <input type="text" id="labPin" maxlength="6" inputmode="numeric" placeholder="6-digit pincode">
+
+  <label for="suEmail">Email</label>
+  <input type="email" id="suEmail" placeholder="you@example.com">
+  <button type="button" class="btn" id="sendOtpBtn">Send OTP to email</button>
+
+  <div id="otpBox" hidden>
+    <label for="suOtp">Enter OTP</label>
+    <input type="text" id="suOtp" maxlength="6" inputmode="numeric" placeholder="6-digit OTP">
+    <button type="button" class="btn" id="verifyOtpBtn">Verify OTP</button>
+  </div>
+
+  <label for="suPass">Password</label>
+  <input type="password" id="suPass" placeholder="At least 6 characters">
+
+  <label for="suPass2">Confirm password</label>
+  <input type="password" id="suPass2" placeholder="Re-enter password">
+
+  <button type="submit" class="btn">Create account</button>
+</form>
+
+      <p class="msg" id="signupMsg"></p>
+      <p class="switch">Already have an account? <a href="#" id="showLogin">Login</a></p>
+    </div>
+  </div>
+
+  <script src="doctorlogin.js"></script>
+</body>
+</html>
